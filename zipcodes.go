@@ -51,6 +51,7 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer fdesc.Close()
 
 	reader := csv.NewReader(bufio.NewReader(fdesc))
 
