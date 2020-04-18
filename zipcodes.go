@@ -22,10 +22,11 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer fdesc.Close()
 
 	reader := csv.NewReader(bufio.NewReader(fdesc))
 	reader.Comma = ';'
-	_, _ = reader.Read() // Pour supprimer l'entête
+	_, _ = reader.Read() // Discard header line
 
 	for {
 		record, err := reader.Read()
