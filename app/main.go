@@ -20,22 +20,22 @@ func main() {
 	var zip, city string
 
 	for {
-		fmt.Print("Entrez un code postal (xxx pour terminer) : ")
-		fmt.Scan(&zip)
+		fmt.Print("Entrez un code postal (Retour pour terminer) : ")
+		fmt.Scanln(&zip)
 		cities, ok := zipcodes.MapZipToCities[zip]
 		if ok {
 			fmt.Println(strings.Join(sorted(cities), ", "))
-		} else if zip[0] == 'x' {
+		} else if zip == "" {
 			break
 		}
 	}
 	for {
-		fmt.Print("Entrez un nom de commune (xxx pour terminer) : ")
-		fmt.Scan(&city)
+		fmt.Print("Entrez un nom de commune (Retour pour terminer) : ")
+		fmt.Scanln(&city)
 		zips, ok := zipcodes.MapCityToZips[city]
 		if ok {
 			fmt.Println(strings.Join(sorted(zips), ", "))
-		} else if city[0] == 'x' {
+		} else if city == "" {
 			break
 		}
 	}
