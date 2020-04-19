@@ -36,13 +36,12 @@ func init() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		if city := record[3]; city == "" {
-			MapZipToCities[record[2]] = append(MapZipToCities[record[2]], record[4])
-			MapCityToZips[record[4]] = append(MapCityToZips[record[4]], record[2])
-		} else {
-			MapZipToCities[record[2]] = append(MapZipToCities[record[2]], city)
-			MapCityToZips[city] = append(MapCityToZips[city], record[2])
+		zip, city := record[2], record[3]
+		if city == "" {
+			city = record[4]
 		}
+		MapZipToCities[zip] = append(MapZipToCities[zip], city)
+		MapCityToZips[city] = append(MapCityToZips[city], zip)
 	}
 }
 

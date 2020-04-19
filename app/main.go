@@ -17,9 +17,8 @@ func sorted(tab []string) []string {
 // Use case...
 func main() {
 
-	var zip, city string
-
 	for {
+		zip := ""
 		fmt.Print("Entrez un code postal (Retour pour terminer) : ")
 		fmt.Scanln(&zip)
 		cities, ok := zipcodes.MapZipToCities[zip]
@@ -30,6 +29,7 @@ func main() {
 		}
 	}
 	for {
+		city := ""
 		fmt.Print("Entrez un nom de commune (Retour pour terminer) : ")
 		fmt.Scanln(&city)
 		zips, ok := zipcodes.MapCityToZips[city]
